@@ -1,0 +1,269 @@
+/* قاعدة أساسية لتصميم صفحة نظيفة وحديثة */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #e9ecef;
+  color: #212529;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* منع التمرير الأفقي */
+}
+
+/* تنسيق صورة تغيير المظهر */
+img.theme {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 36px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+img.theme:hover {
+  transform: scale(1.1);
+}
+
+/* تنسيق الحاوية الرئيسية */
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* تنسيق المركز */
+.center {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+}
+
+/* تنسيق نموذج البحث */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* إضافة تباعد بين العناصر */
+}
+
+.input-group {
+  display: flex;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.input-group .form-control {
+  border: 1px solid #ced4da;
+  border-radius: 8px 0 0 8px;
+  padding: 10px;
+}
+
+.input-group .btn {
+  border: 1px solid #007bff;
+  border-radius: 0 8px 8px 0;
+  background: #007bff;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.input-group .btn:hover {
+  background: #0056b3;
+}
+
+/* تنسيق التحميل */
+.animation {
+  display: none;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* تنسيق نتائج البحث */
+.result {
+  margin-top: 1rem;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.card .name {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.card .ls {
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.card .btns {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.card .btns .icon {
+  color: #007bff;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.card .btns .icon:hover {
+  color: #0056b3;
+}
+
+/* تحسينات لتجربة المستخدم */
+input:disabled {
+  background-color: #f1f1f1;
+  cursor: not-allowed;
+}
+
+@media (max-width: 576px) {
+  .main {
+    padding: 1rem;
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+
+  .input-group .btn {
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+
+	.input-group .form-control {
+  width: 100%; /* العرض الافتراضي: يشغل كامل الحاوية الأم */
+  max-width: 400px; /* أقصى عرض ممكن لحقل الإدخال */
+  min-width: 200px; /* أدنى عرض ممكن لحقل الإدخال */
+  box-sizing: border-box; /* لضمان عدم تجاوز padding و border حدود الحاوية */
+}
+
+}
+/* style.css */
+
+h1 {
+  color: #007bff; /* اللون الأزرق، يمكنك تغييره حسب الحاجة */
+  font-size: 2rem; /* حجم الخط */
+  margin-bottom: 20px; /* المسافة السفلية */
+}
+
+
+/* CSS لتنسيق نافذة الفيديو المنبثقة */
+#popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw; /* عرض 90% من عرض نافذة المتصفح */
+    height: 80vh; /* ارتفاع 80% من ارتفاع نافذة المتصفح */
+    background-color: white;
+    z-index: 1000;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden; /* إخفاء التمرير */
+}
+
+#popup iframe {
+    width: 100%;
+    height: calc(100% - 40px); /* حجز مساحة للأزرار مع الأخذ بعين الاعتبار الهامش */
+    border: none;
+}
+
+#popup button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#popup button:hover {
+    background-color: #0056b3;
+}
+
+.seeders {
+    color: green;
+}
+.leechers {
+    color: red;
+}
+
+/* تأثيرات التلاشي */
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+.fade-in {
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
+}
+
+/* تأثير تغيير الألوان */
+@keyframes colorChange {
+    0% { color: #FF0000; } /* أحمر */
+    10% { color: #FF7F00; } /* برتقالي */
+    20% { color: #FFFF00; } /* أصفر */
+    30% { color: #7FFF00; } /* أخضر فاتح */
+    40% { color: #00FF00; } /* أخضر */
+    50% { color: #00FF7F; } /* أخضر زاهي */
+    60% { color: #00FFFF; } /* أزرق سماوي */
+    70% { color: #007FFF; } /* أزرق */
+    80% { color: #7F00FF; } /* أرجواني */
+    90% { color: #FF00FF; } /* فوشيا */
+    100% { color: #FF007F; } /* وردي */
+}
+
+.color-change {
+    animation: colorChange 3s infinite; /* التكرار اللانهائي مع مدة 3 ثوانٍ */
+}
+
+.black-brackets::before {
+    content: '[';
+    color: black; /* اللون الأسود للأقواس */
+}
+
+.black-brackets::after {
+    content: ']';
+    color: black; /* اللون الأسود للأقواس */
+}
+
+.card-container {
+    position: relative; /* يجعل العنصر مرجعًا لتحديد موقع الزر */
+    padding: 20px; /* حشو حول المحتوى */
+}
+
+#ccButton {
+    position: absolute;
+    top: 10px; /* المسافة من أعلى العنصر */
+    right: 10px; /* المسافة من الجانب الأيمن للعنصر */
+    background-color: #007bff; /* لون الخلفية */
+    color: white; /* لون النص */
+    border: none; /* إزالة الحدود */
+    border-radius: 5px; /* حواف دائرية */
+    padding: 10px 20px; /* حشو داخلي */
+    cursor: pointer; /* تغيير شكل المؤشر عند المرور فوق الزر */
+    font-size: 14px; /* حجم الخط */
+}
+
+#ccButton:hover {
+    background-color: #0056b3; /* لون الخلفية عند التمرير */
+}

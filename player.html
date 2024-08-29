@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشغل الفيديو</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            transform: scale(0.5); /* تصغير الصفحة إلى 50% */
+            transform-origin: 0 0; /* تعيين نقطة الأصل للتحجيم إلى الزاوية العليا اليسرى */
+        }
+        .video-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            max-width: 1000px;
+            max-height: 800px;
+        }
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .close-btn {
+            position: absolute;
+            bottom: 10px;
+            left: 98%;
+            transform: translateX(-50%);
+            background: red;
+            color: white;
+            border: none;
+            padding: 30px 40px;
+            cursor: pointer;
+            font-size: 35px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <button class="close-btn" id="closeButton">عودة</button>
+        <video controls autoplay id="videoPlayer"></video>
+    </div>
+
+    <script>
+        document.getElementById('closeButton').addEventListener('click', function() {
+            // اعتبار الضغط الواحد كضغطتين
+            window.history.back(); // العودة إلى الصفحة السابقة كأنها ضغطتين
+            // إضافة تأخير بسيط لتفادي أي تأخير في التنفيذ
+            setTimeout(() => window.history.back(), 0);
+        });
+
+        // الحصول على قيمة الـ hash من URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const hash = urlParams.get('hash');
+
+        if (hash) {
+            // إعداد مصدر الفيديو
+            const videoPlayer = document.getElementById('videoPlayer');
+            videoPlayer.src = `magnet:?xt=urn:btih:${hash}`;
+
+            // تضمين Webtor player
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/@webtor/player-sdk-js/dist/index.min.js';
+            script.charset = 'utf-8';
+            script.async = true;
+            document.body.appendChild(script);
+        } else {
+            alert('لم يتم العثور على الـ hash في الرابط.');
+            window.history.back(); // العودة إلى الصفحة السابقة في حالة عدم العثور على hash
+        }
+    </script>
+</body>
+</html>
